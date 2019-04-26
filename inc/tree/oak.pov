@@ -1,17 +1,9 @@
-#include "inc/base.pov"
+#include "inc/Maketree.pov"
 #include "inc/danyMaterial.pov"
-#include "inc/tree/maketree.pov"
 
 
-// same seed for branches and leaves but seperate streams so that if you remove all leaves things remain the same.
-#declare streamSeed = 69;
-#declare rd = seed(streamSeed);
-#declare rdl = seed(streamSeed);
-
-// general tree options.
-#declare dofile = true;
-#declare dotexture = true;
-//#declare txtTree = texture{rusty}
+#declare txtTree = texture{rusty}
+#declare txtLeaf = texture{concrete}
 // structure parameters
 #declare level0 = 3;
 #declare nseg0 = 12;
@@ -50,7 +42,6 @@
 #declare stdalx = 40;
 #declare stdlsize = 0.1;
 // leaf structure
-//#declare txtLeaf = texture{concrete} TODO: sort out leaf texturing.
 #declare lsize = 0.3;
 #declare seg = 10;
 #declare ll = 5;
@@ -66,18 +57,3 @@
 #declare ls = 3;
 #declare ws = 0.12;
 #declare as = 10;
-
-
-#for (i, 1, 3, 1)
-    #declare ftname = concat("inc/tree/oak/", str(i, 1, 0), ".inc")
-    #declare ffname = concat("inc/tree/oak/leaf", str(i, 1, 0), ".inc")
-    #declare fvname = concat("inc/tree/oak/foliage", str(i, 1, 0), ".inc")
-    object {
-        #if (leafproba>0)
-            #declare Leaf = object{
-                MakeLeaf(lsize, seg, ll, wl, fl, lpow, al, apow, ndents, nlobes, alobes, qlobes, ls, ws, as, dofile, ffname)
-            }
-        #end
-        MakeTree()
-    }
-#end

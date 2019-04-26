@@ -23,7 +23,7 @@ sky_sphere {
 }
 
 #macro sun(time)
-    #local rad = 200;
+    #local rad = 10000;
     light_source {
         <cos(time), sin(time), cos(time)> * rad
         rgb 1
