@@ -1,0 +1,4 @@
+#macro getTree(type)
+
+
+#end
